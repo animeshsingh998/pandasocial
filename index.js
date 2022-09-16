@@ -22,9 +22,9 @@ app.use('/user', userRoutes);
 app.use('/post', postRoutes);
 app.use('/user/post', postRoutes);
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
+  cloud_name: "dqmfwxe2z",
+  api_key: "442756742463658",
+  api_secret: "h61JRSY6T1y-izmFYt-wt5GXRN4",
 });
 
 mongoose

@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const baseUrl = "https://pandasocial.vercel.app";
+
 export const loginUser = (email, password) => async (dispatch) => {
   try {
     dispatch({
@@ -7,7 +9,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "/auth/login",
+      `${baseUrl}/auth/login`,
       { email, password },
       { withCredentials: true }
     );
