@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Viga&display=swap');
+
+:root {
+  --bg-color: #F9F7F7;
+  --col-test: #FF2E63;
+  --primary-color: #EB1D36;
+  --primary-color2: #FA9494;
+  --primary-color3: #CFD2CF;
+  --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.348);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+.btn {
+  border: none;
+  color: white;
+  background-color: var(--primary-color);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  border-radius: 10px;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.loaderBtn {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
+
+.animesh>a>img{
+  width: 100%;
+  border-radius: 15px;
+}

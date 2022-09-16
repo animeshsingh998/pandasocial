@@ -1,0 +1,25 @@
+.ProfileMid {
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.ProfileMid>.Navbar {
+    display: none;
+}
+
+.ProfileMid>.ProfileInfoCard {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .ProfileMid>.Navbar {
+        display: flex;
+    }
+
+    .ProfileMid>.ProfileInfoCard {
+        display: flex;
+    }
+}

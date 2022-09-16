@@ -1,0 +1,102 @@
+.ProfileCard {
+    width: 100%;
+    height: max-content;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+}
+
+.coverImg {
+    width: 100%;
+    position: relative;
+}
+
+.cardCover {
+    width: 100%;
+    object-fit: cover;
+    max-height: 150px;
+    border-radius: 15px 15px 0 0;
+}
+
+.cardProfilePic {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.pcardMid {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pcardMid>span:nth-of-type(1) {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.pcardMid>span:nth-of-type(2) {
+    font-weight: 400;
+    font-size: 17px;
+}
+
+.pcardBot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+.hrCol {
+    width: 80%;
+    border: none;
+    border-bottom: 0.1px solid black;
+}
+
+.botInfo {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+    justify-content: space-evenly;
+}
+
+.vl {
+    border-right: 0.1px solid black;
+}
+
+.follow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.follow>span:nth-of-type(1) {
+    font-weight: 600;
+}
+
+.follow>span:nth-of-type(2) {
+    font-weight: 300;
+}
+
+.myProf {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin: 10px 0;
+    font-size: 20px;
+    cursor: pointer;
+    text-decoration: none;
+}
+

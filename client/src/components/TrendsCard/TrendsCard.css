@@ -1,0 +1,22 @@
+.TrendsCard{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+}
+
+.TrendsCard>span{
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.trends{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

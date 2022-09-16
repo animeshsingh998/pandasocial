@@ -1,0 +1,43 @@
+.HomeMid {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px 10px;
+    overflow-y: scroll;
+}
+
+.HomeMid>.SearchIcon {
+    display: none;
+}
+
+.searchResult {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 20px;
+}
+
+.HomeMid>.Navbar {
+    display: none;
+}
+
+.HomeMid>.ProfileCard {
+    display: none;
+}
+
+@media screen and (max-width: 600px) {
+    .HomeMid>.Navbar {
+        display: flex;
+    }
+
+    .HomeMid>.ProfileCard {
+        display: flex;
+    }
+
+    .HomeMid>.SearchIcon {
+        display: flex;
+    }
+}

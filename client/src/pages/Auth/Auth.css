@@ -1,0 +1,169 @@
+.Auth {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    background-image: linear-gradient(180deg, #FFFFFF 0%, #6284FF 50%, #FF0000 100%);
+
+}
+
+.mobileLogo {
+    display: none;
+}
+
+.authWrapper {
+    width: 80%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    padding: 20px;
+}
+
+.authLeft {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.authLogo {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+    padding: 0 50px;
+    margin-top: -50px;
+}
+
+.authLogo>img {
+    width: 300px;
+    height: 250px;
+    margin-left: -100px;
+}
+
+.authLogo>h1 {
+    font-weight: 600;
+    font-size: 60px;
+    margin-left: -80px;
+    color: #711A75;
+}
+
+.authDesc {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 50px;
+    margin-top: -50px;
+}
+
+.authDesc>h3 {
+    font-size: 25px;
+
+}
+
+.authRight {
+    flex: 1;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    min-height: 70%;
+    border-radius: 15px;
+    background-color: #0093E9;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+}
+
+.formHeader {
+    display: flex;
+    height: 60px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.loginDiv {
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px 0 0 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.signupDiv {
+    flex: 1;
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 15px 0 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.formHeader>span {
+    font-weight: 600;
+}
+
+.formMain {
+    padding: 30px 25px;
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1100px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .Auth {
+        overflow-x: hidden;
+        height: 830px;
+    }
+
+    .authLeft {
+        display: none;
+    }
+
+    .authWrapper {
+        width: 90%;
+        height: 60%;
+        padding: 0;
+    }
+
+    .formWrapper {
+        width: 95%;
+        height: 95%;
+        padding: 0;
+    }
+
+    .mobileLogo {
+        display: block;
+        position: absolute;
+        left: 15%;
+        top: 10%;
+    }
+
+    .authLogo>h1 {
+        font-size: 50px;
+        color: black;
+    }
+}

@@ -1,0 +1,13 @@
+.WhoFollowsYou{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    /* overflow-y: scroll; */
+}
+
+.WhoFollowsYou>span{
+    font-weight: 600;
+    font-size: 18px;
+}
