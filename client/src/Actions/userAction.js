@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "https://pandasocial.vercel.app";
+// const baseUrl = "https://pandasocial.vercel.app";
 
 export const loginUser = (email, password) => async (dispatch) => {
   try {
