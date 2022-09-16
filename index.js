@@ -28,10 +28,13 @@ cloudinary.config({
 });
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://animesh007:animeshpanda007@cluster0.snohdbx.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(console.log("Connection with database Successfull"))
   .catch((error) => {
     console.log(error.message);
