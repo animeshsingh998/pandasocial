@@ -32,7 +32,7 @@ export const registerUser = async (req, res) => {
     await user.save();
     const token = jwt.sign(
       { _id: user._id, isAdmin: user.isAdmin },
-      process.env.JWT_KEY
+      "asjdajdagadgadwjjfjfjjs"
     );
     const otherDetails = getDetails(user)
     return res.status(201).cookie("jwt", token, { httpOnly: true }).json(otherDetails);
