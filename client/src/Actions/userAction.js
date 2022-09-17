@@ -20,7 +20,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       {headers},
       { withCredentials: true }
     );
-
+      console.log(data);
     document.cookie('jtw', data.token);
 
     dispatch({
