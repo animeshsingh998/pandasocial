@@ -4,6 +4,8 @@ import axios from "axios";
 
 const headers = {
   "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Credentials": "true",
 };
 
 export const loginUser = (email, password) => async (dispatch) => {
