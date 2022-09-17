@@ -9,7 +9,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      `/auth/login`,
+      `https://apipandasocial.vercel.app/auth/login`,
       { email, password },
       { withCredentials: true }
     );
