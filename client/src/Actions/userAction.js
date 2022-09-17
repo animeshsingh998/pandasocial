@@ -40,8 +40,9 @@ export const registerUser = (email, username, password) => async (dispatch) => {
     });
 
     const { data } = await axios.post(
-      "/auth/register",
+      "https://apipandasocial.vercel.app/auth/register",
       { email, username, password },
+      {headers},
       { withCredentials: true }
     );
 
@@ -63,7 +64,10 @@ export const loadMyProfile = () => async (dispatch) => {
       type: "loadMyProfileRequest",
     });
 
-    const { data } = await axios.get("/user/myprofile");
+    const { data } = await axios.get(
+      "https://apipandasocial.vercel.app/user/myprofile",
+      {headers}
+    );
 
     dispatch({
       type: "loadMyProfileSuccess",
@@ -82,7 +86,7 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({
       type: "logoutRequest",
     });
-    await axios.put("/auth/logout");
+    await axios.put("https://apipandasocial.vercel.app/auth/logout",{headers});
 
     dispatch({
       type: "logoutSuccess",
@@ -112,17 +116,21 @@ export const updateProfile =
       dispatch({
         type: "updateProfileRequest",
       });
-      const { data } = await axios.put("/user/updateprofile", {
-        name: name,
-        username: username,
-        email: email,
-        avatar: avatar,
-        cover: cover,
-        status: status,
-        livesIn: livesIn,
-        worksAt: worksAt,
-        profession: profession,
-      });
+      const { data } = await axios.put(
+        "https://apipandasocial.vercel.app/user/updateprofile",
+        {
+          name: name,
+          username: username,
+          email: email,
+          avatar: avatar,
+          cover: cover,
+          status: status,
+          livesIn: livesIn,
+          worksAt: worksAt,
+          profession: profession,
+        },
+        {headers}
+      );
 
       dispatch({
         type: "updateProfileSuccess",
@@ -142,7 +150,10 @@ export const getUserById = (id) => async (dispatch) => {
       type: "userByIdRequest",
     });
 
-    const { data } = await axios.get(`/user/${id}/profile`);
+    const { data } = await axios.get(
+      `https://apipandasocial.vercel.app/user/${id}/profile`,
+      { headers }
+    );
 
     dispatch({
       type: "userByIdSuccess",
@@ -163,7 +174,10 @@ export const searchUsers = (query) => async (dispatch) => {
       type: "searchUsersRequest",
     });
 
-    const { data } = await axios.get(`/user/search/${query}`);
+    const { data } = await axios.get(
+      `https://apipandasocial.vercel.app/user/search/${query}`,
+      {headers}
+    );
 
     dispatch({
       type: "searchUsersSuccess",
@@ -183,7 +197,10 @@ export const followUser = (userId) => async (dispatch) => {
       type: "followUserRequest",
     });
 
-    const { data } = await axios.put(`/user/${userId}/follow`);
+    const { data } = await axios.put(
+      `https://apipandasocial.vercel.app/user/${userId}/follow`,
+      {headers}
+    );
 
     dispatch({
       type: "followUserSuccess",

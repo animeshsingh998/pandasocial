@@ -1,15 +1,25 @@
 import axios from 'axios';
 
+const headers = {
+  "Content-Type": "application/json",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Credentials": "true",
+};
+
 export const addPost = (desc, image) => async (dispatch) => {
     try {
         dispatch({
             type: "addPostRequest"
         });
 
-        const { data } = await axios.post('/post/create', {
+        const { data } = await axios.post(
+          "https://apipandasocial.vercel.app/post/create",
+          {
             desc,
-            image
-        });
+            image,
+            },
+          {headers}
+        );
 
         dispatch({
             type: "addPostSuccess",
@@ -29,7 +39,10 @@ export const getTimeline = () => async (dispatch) => {
             type: "getTimelineRequest"
         });
 
-        const { data } = await axios.get('/post/timeline');
+        const { data } = await axios.get(
+            "https://apipandasocial.vercel.app/post/timeline",
+            {headers}
+        );
 
         dispatch({
             type: "getTimelineSuccess",
@@ -49,7 +62,10 @@ export const likeDislikePost = (id) => async (dispatch) => {
             type: "likePostRequest"
         });
 
-        const { data } = await axios.put(`post/${id}/like`);
+        const { data } = await axios.put(
+            `https://apipandasocial.vercel.app/post/${id}/like`,
+            {headers}
+        );
 
         dispatch({
             type: "likePostSuccess",
@@ -69,7 +85,10 @@ export const getMyPosts = () => async (dispatch) => {
             type: "myPostsRequest"
         });
 
-        const { data } = await axios.get('/post/myposts');
+        const { data } = await axios.get(
+            "https://apipandasocial.vercel.app/post/myposts",
+            {headers}
+        );
 
         dispatch({
             type: "myPostsSuccess",
@@ -89,7 +108,10 @@ export const delPost = (postId) => async (dispatch) => {
         type: "delPostRequest",
       });
 
-      const { data } = await axios.delete(`/post/${postId}/delete`);
+      const { data } = await axios.delete(
+          `https://apipandasocial.vercel.app/post/${postId}/delete`,
+          {headers}
+      );
 
       dispatch({
         type: "delPostSuccess",
