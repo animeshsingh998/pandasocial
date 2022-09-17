@@ -21,7 +21,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       { withCredentials: true }
     );
     console.log(data.token);
-    document.cookie("jtw", data.token);
+    // document.cookie("jtw", data.token);
 
     dispatch({
       type: "loginSuccess",
@@ -30,7 +30,7 @@ export const loginUser = (email, password) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: "loginFailure",
-      error: error,
+      error: error.response.data.error,
     });
   }
 };
