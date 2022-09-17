@@ -17,17 +17,16 @@ export const loginUser = (email, password) => async (dispatch) => {
     const { data } = await axios.post(
       `https://apipandasocial.vercel.app/auth/login`,
       { email, password },
-      {headers},
+      { headers },
       { withCredentials: true }
     );
-      console.log(data);
-    document.cookie('jtw', data.token);
+    console.log(data.token);
+    document.cookie("jtw", data.token);
 
     dispatch({
       type: "loginSuccess",
       payload: data.otherDetails,
     });
-
   } catch (error) {
     dispatch({
       type: "loginFailure",
@@ -45,7 +44,7 @@ export const registerUser = (email, username, password) => async (dispatch) => {
     const { data } = await axios.post(
       "https://apipandasocial.vercel.app/auth/register",
       { email, username, password },
-      {headers},
+      { headers },
       { withCredentials: true }
     );
 
@@ -69,7 +68,7 @@ export const loadMyProfile = () => async (dispatch) => {
 
     const { data } = await axios.get(
       "https://apipandasocial.vercel.app/user/myprofile",
-      {headers}
+      { headers }
     );
 
     dispatch({
@@ -89,7 +88,9 @@ export const logoutUser = () => async (dispatch) => {
     dispatch({
       type: "logoutRequest",
     });
-    await axios.put("https://apipandasocial.vercel.app/auth/logout",{headers});
+    await axios.put("https://apipandasocial.vercel.app/auth/logout", {
+      headers,
+    });
 
     dispatch({
       type: "logoutSuccess",
@@ -132,7 +133,7 @@ export const updateProfile =
           worksAt: worksAt,
           profession: profession,
         },
-        {headers}
+        { headers }
       );
 
       dispatch({
@@ -179,7 +180,7 @@ export const searchUsers = (query) => async (dispatch) => {
 
     const { data } = await axios.get(
       `https://apipandasocial.vercel.app/user/search/${query}`,
-      {headers}
+      { headers }
     );
 
     dispatch({
@@ -202,7 +203,7 @@ export const followUser = (userId) => async (dispatch) => {
 
     const { data } = await axios.put(
       `https://apipandasocial.vercel.app/user/${userId}/follow`,
-      {headers}
+      { headers }
     );
 
     dispatch({
