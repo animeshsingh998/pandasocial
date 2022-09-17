@@ -20,8 +20,8 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use('/auth', cors(), authRoutes);
-app.use('/user', userRoutes);
-app.use('/post', postRoutes);
+app.use('/user', cors(), userRoutes);
+app.use('/post', cors(), postRoutes);
 app.use('/user/post', postRoutes);
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD,
