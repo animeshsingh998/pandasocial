@@ -17,7 +17,7 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 app.use(cors());
-app.use('/auth', authRoutes);
+app.use('/auth', cors(), authRoutes);
 app.use('/user', userRoutes);
 app.use('/post', postRoutes);
 app.use('/user/post', postRoutes);
