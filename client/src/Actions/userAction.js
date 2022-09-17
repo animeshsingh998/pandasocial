@@ -21,10 +21,13 @@ export const loginUser = (email, password) => async (dispatch) => {
       { withCredentials: true }
     );
 
+    document.cookie('jtw', data.token);
+
     dispatch({
       type: "loginSuccess",
-      payload: data,
+      payload: data.otherDetails,
     });
+
   } catch (error) {
     dispatch({
       type: "loginFailure",

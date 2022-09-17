@@ -56,7 +56,7 @@ export const loginUser = async (req, res) => {
         return res
           .status(200)
           .cookie("jwt", token, { httpOnly: true })
-          .json({ ...otherDetails });
+          .json({ otherDetails, token });
       } else {
         return res.status(400).json({error: "Invalid Password"});
       }
