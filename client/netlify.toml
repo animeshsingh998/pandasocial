@@ -2,3 +2,8 @@
 from = "/*"
 to = "index.js"
 status = 200
+
+from = "/api"
+to = "https://apipandasocial.vercel.app"
+status = 200
+force = true
