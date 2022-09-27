@@ -66,7 +66,9 @@ export const loadMyProfile = () => async (dispatch) => {
       type: "loadMyProfileRequest",
     });
 
-    const { data } = await axios.get(`${baseUrl}/user/myprofile`, { headers });
+    const { data } = await axios.get(`${baseUrl}/user/myprofile`, { 
+      headers: headers
+     });
 
     dispatch({
       type: "loadMyProfileSuccess",

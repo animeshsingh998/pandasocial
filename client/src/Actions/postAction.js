@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const baseUrl = "https://apipandasocial.onrender.com";
+
 const headers = {
   "Content-Type": "application/json",
   "Access-Control-Allow-Origin": "*",
@@ -13,7 +15,7 @@ export const addPost = (desc, image) => async (dispatch) => {
         });
 
         const { data } = await axios.post(
-          "https://apipandasocial.vercel.app/post/create",
+          `${baseUrl}/post/create`,
           {
             desc,
             image,
@@ -39,10 +41,9 @@ export const getTimeline = () => async (dispatch) => {
             type: "getTimelineRequest"
         });
 
-        const { data } = await axios.get(
-            "https://apipandasocial.vercel.app/post/timeline",
-            {headers}
-        );
+        const { data } = await axios.get(`${baseUrl}/post/timeline`, {
+          headers,
+        });
 
         dispatch({
             type: "getTimelineSuccess",
@@ -62,10 +63,9 @@ export const likeDislikePost = (id) => async (dispatch) => {
             type: "likePostRequest"
         });
 
-        const { data } = await axios.put(
-            `https://apipandasocial.vercel.app/post/${id}/like`,
-            {headers}
-        );
+        const { data } = await axios.put(`${baseUrl}/post/${id}/like`, {
+          headers,
+        });
 
         dispatch({
             type: "likePostSuccess",
@@ -85,10 +85,9 @@ export const getMyPosts = () => async (dispatch) => {
             type: "myPostsRequest"
         });
 
-        const { data } = await axios.get(
-            "https://apipandasocial.vercel.app/post/myposts",
-            {headers}
-        );
+        const { data } = await axios.get(`${baseUrl}/post/myposts`, {
+          headers,
+        });
 
         dispatch({
             type: "myPostsSuccess",
@@ -108,10 +107,9 @@ export const delPost = (postId) => async (dispatch) => {
         type: "delPostRequest",
       });
 
-      const { data } = await axios.delete(
-          `https://apipandasocial.vercel.app/post/${postId}/delete`,
-          {headers}
-      );
+      const { data } = await axios.delete(`${baseUrl}/post/${postId}/delete`, {
+        headers,
+      });
 
       dispatch({
         type: "delPostSuccess",
