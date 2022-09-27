@@ -15,7 +15,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://pandasocial.netlify.app/",
+    origin: "*",
     credentials: true
   })
 );
