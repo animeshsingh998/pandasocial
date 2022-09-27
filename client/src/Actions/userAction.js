@@ -20,7 +20,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       { headers },
       { withCredentials: true }
     );
-    // console.log(data.token);
+    console.log(data.token);
     document.cookie = `jwt = ${data.token}; httpOnly=false; path=/`
 
     dispatch({
