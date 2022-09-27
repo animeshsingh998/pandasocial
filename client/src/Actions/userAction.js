@@ -21,7 +21,7 @@ export const loginUser = (email, password) => async (dispatch) => {
       { withCredentials: true }
     );
     console.log(data.token);
-    document.cookie = `jwt = ${data.token}; httpOnly=false; path=/`
+    document.cookie = `jwt = ${data.token}; httpOnly=true; path=/`
 
     dispatch({
       type: "loginSuccess",

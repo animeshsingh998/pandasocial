@@ -55,7 +55,7 @@ export const loginUser = async (req, res) => {
         const otherDetails = getDetails(user);
         return res
           .status(200)
-          .cookie("jwt", token, { domain: "https://pandasocial.netlify.app", path: "/base", httpOnly: false })
+          .cookie("jwt", token, { domain: "https://pandasocial.netlify.app", path: "/base", httpOnly: true })
           .json({ otherDetails, token });
       } else {
         return res.status(400).json({error: "Invalid Password"});
