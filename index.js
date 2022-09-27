@@ -13,15 +13,15 @@ dotenv.config();
 
 const app = express();
 
+app.use(bodyParser.json({ limit: "50mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
+app.use(cookieParser());
 app.use(
   cors({
     origin: "*",
     credentials: true
   })
 );
-app.use(bodyParser.json({ limit: "50mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
-app.use(cookieParser());
 app.use('/auth', cors(), authRoutes);
 app.use('/user', cors(), userRoutes);
 app.use('/post', cors(), postRoutes);
