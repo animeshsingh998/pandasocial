@@ -5,7 +5,7 @@ export const authenticate = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
     if (!token) {
-      return res.status(400).json("Please Login First");
+      return res.status(403).json("Please Login First");
     }
 
     const data = await jwt.verify(token, process.env.JWT_KEY);
