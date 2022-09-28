@@ -35,7 +35,7 @@ export const registerUser = async (req, res) => {
       process.env.JWT_KEY
     );
     const otherDetails = getDetails(user)
-    return res.status(201).cookie("jwt", token, { httpOnly: true }).json(otherDetails);
+    return res.status(201).json({otherDetails, token});
   } catch (error) {
     res.status(500).json({error: error.message});
   }
@@ -54,9 +54,7 @@ export const loginUser = async (req, res) => {
         );
         const otherDetails = getDetails(user);
         return res
-          .status(200)
-          .cookie("jwt", token, { domain: "https://pandasocial.netlify.app", path: "/base", httpOnly: true })
-          .json({ otherDetails, token });
+          .status(200).json({ otherDetails, token });
       } else {
         return res.status(400).json({error: "Invalid Password"});
       }

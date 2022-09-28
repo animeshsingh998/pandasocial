@@ -46,10 +46,10 @@ export const registerUser = (email, username, password) => async (dispatch) => {
       { headers },
       { withCredentials: true }
     );
-
+    window.localStorage.setItem("jwt", data.token);
     dispatch({
       type: "registerSuccess",
-      payload: data,
+      payload: data.otherDetails,
     });
   } catch (error) {
     dispatch({
