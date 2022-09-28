@@ -83,12 +83,12 @@ export const loadMyProfile = (token) => async (dispatch) => {
   }
 };
 
-export const logoutUser = () => async (dispatch) => {
+export const logoutUser = (token) => async (dispatch) => {
   try {
     dispatch({
       type: "logoutRequest",
     });
-    await axios.put(`${baseUrl}/auth/logout`, {
+    await axios.put(`${baseUrl}/auth/logout/${token}`, {
       headers,
     });
 
@@ -113,7 +113,8 @@ export const updateProfile =
     profession,
     worksAt,
     username,
-    status
+    status,
+    token
   ) =>
   async (dispatch) => {
     try {
@@ -121,7 +122,7 @@ export const updateProfile =
         type: "updateProfileRequest",
       });
       const { data } = await axios.put(
-        `${baseUrl}/user/updateprofile`,
+        `${baseUrl}/user/updateprofile/${token}`,
         {
           name: name,
           username: username,
@@ -148,13 +149,13 @@ export const updateProfile =
     }
   };
 
-export const getUserById = (id) => async (dispatch) => {
+export const getUserById = (id, token) => async (dispatch) => {
   try {
     dispatch({
       type: "userByIdRequest",
     });
 
-    const { data } = await axios.get(`${baseUrl}/user/${id}/profile`, {
+    const { data } = await axios.get(`${baseUrl}/user/${id}/profile/${token}`, {
       headers,
     });
 
@@ -171,13 +172,13 @@ export const getUserById = (id) => async (dispatch) => {
   }
 };
 
-export const searchUsers = (query) => async (dispatch) => {
+export const searchUsers = (query, token) => async (dispatch) => {
   try {
     dispatch({
       type: "searchUsersRequest",
     });
 
-    const { data } = await axios.get(`${baseUrl}/user/search/${query}`, {
+    const { data } = await axios.get(`${baseUrl}/user/search/${query}/${token}`, {
       headers,
     });
 
@@ -193,13 +194,13 @@ export const searchUsers = (query) => async (dispatch) => {
   }
 };
 
-export const followUser = (userId) => async (dispatch) => {
+export const followUser = (userId, token) => async (dispatch) => {
   try {
     dispatch({
       type: "followUserRequest",
     });
 
-    const { data } = await axios.put(`${baseUrl}/user/${userId}/follow`, {
+    const { data } = await axios.put(`${baseUrl}/user/${userId}/follow/${token}`, {
       headers,
     });
 

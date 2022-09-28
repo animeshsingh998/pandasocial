@@ -8,14 +8,14 @@ const headers = {
   "Access-Control-Allow-Credentials": "true",
 };
 
-export const addPost = (desc, image) => async (dispatch) => {
+export const addPost = (desc, image, token) => async (dispatch) => {
     try {
         dispatch({
             type: "addPostRequest"
         });
 
         const { data } = await axios.post(
-          `${baseUrl}/post/create`,
+          `${baseUrl}/post/create/${token}`,
           {
             desc,
             image,
@@ -35,13 +35,13 @@ export const addPost = (desc, image) => async (dispatch) => {
     }
 }
 
-export const getTimeline = () => async (dispatch) => {
+export const getTimeline = (token) => async (dispatch) => {
     try {
         dispatch({
             type: "getTimelineRequest"
         });
 
-        const { data } = await axios.get(`${baseUrl}/post/timeline`, {
+        const { data } = await axios.get(`${baseUrl}/post/timeline/${token}`, {
           headers,
         });
 
@@ -57,13 +57,13 @@ export const getTimeline = () => async (dispatch) => {
     }
 }
 
-export const likeDislikePost = (id) => async (dispatch) => {
+export const likeDislikePost = (id, token) => async (dispatch) => {
     try {
         dispatch({
             type: "likePostRequest"
         });
 
-        const { data } = await axios.put(`${baseUrl}/post/${id}/like`, {
+        const { data } = await axios.put(`${baseUrl}/post/${id}/like/${token}`, {
           headers,
         });
 
@@ -79,13 +79,13 @@ export const likeDislikePost = (id) => async (dispatch) => {
     }
 }
 
-export const getMyPosts = () => async (dispatch) => {
+export const getMyPosts = (token) => async (dispatch) => {
     try {
         dispatch({
             type: "myPostsRequest"
         });
 
-        const { data } = await axios.get(`${baseUrl}/post/myposts`, {
+        const { data } = await axios.get(`${baseUrl}/post/myposts/${token}`, {
           headers,
         });
 
@@ -101,13 +101,13 @@ export const getMyPosts = () => async (dispatch) => {
     }
 }
 
-export const delPost = (postId) => async (dispatch) => {
+export const delPost = (postId, token) => async (dispatch) => {
     try {
       dispatch({
         type: "delPostRequest",
       });
 
-      const { data } = await axios.delete(`${baseUrl}/post/${postId}/delete`, {
+      const { data } = await axios.delete(`${baseUrl}/post/${postId}/delete/${token}`, {
         headers,
       });
 

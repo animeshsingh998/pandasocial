@@ -20,10 +20,8 @@ const HomeMid = () => {
           {sResults && sResults.length > 0
             ? sResults.map((user) => (
                 <FollowerCard key={user._id} user={user} />
-                // console.log(user.avatar[0].url)
               ))
             : "No users Found"}
-          {/* Hemlo */}
         </div>
       ) : (
         <>

@@ -4,14 +4,15 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMyPosts, getTimeline } from "../../Actions/postAction";
 
-const MyPosts = ({profile}) => {
+const MyPosts = ({ profile }) => {
   const dispatch = useDispatch();
   const { myPosts } = useSelector((state) => state.posts);
-  const { postsOfUser } = useSelector(state => state.users);
+  const { postsOfUser } = useSelector((state) => state.users);
+  const token = window.localStorage.getItem("jwt");
   useEffect(() => {
-    dispatch(getTimeline());
-    dispatch(getMyPosts());
-  }, [dispatch]);
+    token && dispatch(getTimeline(token));
+    token && dispatch(getMyPosts(token));
+  }, [dispatch, token]);
   return (
     <>
       {profile ? (
@@ -44,11 +45,9 @@ const MyPosts = ({profile}) => {
               />
             ))
           ) : (
-            <h3 style={{ padding: "0 20px" }}>
-              No Posts Yet
-            </h3>
+            <h3 style={{ padding: "0 20px" }}>No Posts Yet</h3>
           )}
-            {/* user ki posts */}
+          {/* user ki posts */}
         </div>
       )}
     </>

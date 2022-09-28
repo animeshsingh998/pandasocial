@@ -10,9 +10,10 @@ import "./Profile.css";
 const Profile = ({ profile }) => {
   const dispatch = useDispatch();
   const { id } = useParams();
+  const token = window.localStorage.getItem("jwt");
   useEffect(() => {
-    dispatch(getUserById(id));
-  },[dispatch, id])
+    token && dispatch(getUserById(id, token));
+  }, [dispatch, id, token]);
   return (
     <div className="Profile">
       <ProfileLeft profile={profile} />

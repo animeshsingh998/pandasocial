@@ -1,8 +1,8 @@
 import "./SharePost.css";
 import { useState } from "react";
-import noProfile from '../../assets/images/noprofile.jpg';
-import { useDispatch, useSelector } from 'react-redux';
-import loader from '../../assets/images/loader.gif';
+import noProfile from "../../assets/images/noprofile.jpg";
+import { useDispatch, useSelector } from "react-redux";
+import loader from "../../assets/images/loader.gif";
 import {
   AddPhotoAlternate,
   PlayCircleOutline,
@@ -18,8 +18,9 @@ const SharePost = () => {
   const [sharePhoto, setSharePhoto] = useState(null);
   const [valid, setValid] = useState(true);
   const [desc, setDesc] = useState("");
-  const { user } = useSelector(state => state.users);
-  const { loading } = useSelector(state => state.posts);
+  const { user } = useSelector((state) => state.users);
+  const { loading } = useSelector((state) => state.posts);
+  const token = window.localStorage.getItem("jwt");
   const handleFile = (e) => {
     const photoRaw = e.target.files[0];
     const Reader = new FileReader();
@@ -28,16 +29,16 @@ const SharePost = () => {
       if (Reader.readyState === 2) {
         setSharePhoto(Reader.result);
       }
-    }; 
+    };
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(addPost(desc, sharePhoto));
+    await dispatch(addPost(desc, sharePhoto, token));
     setSharePhoto(null);
     setDesc("");
-    dispatch(getTimeline());
-    dispatch(getMyPosts());
-  }
+    await dispatch(getTimeline(token));
+    dispatch(getMyPosts(token));
+  };
   useEffect(() => {
     if (desc.length > 2) {
       setValid(false);
@@ -54,7 +55,7 @@ const SharePost = () => {
           type="text"
           placeholder="What's in your mind"
           required
-          value={desc.length<1?"":desc}
+          value={desc.length < 1 ? "" : desc}
           onChange={(e) => setDesc(e.target.value)}
         />
       </div>
@@ -85,7 +86,11 @@ const SharePost = () => {
           <CalendarMonth style={{ color: "#BE9FE1" }} />
           <span style={{ color: "#BE9FE1" }}>Schedule</span>
         </div>
-        <button className="btn share-btn" onClick={handleSubmit} disabled={valid || loading}>
+        <button
+          className="btn share-btn"
+          onClick={handleSubmit}
+          disabled={valid || loading}
+        >
           {loading ? (
             <img src={loader} alt="loading.." className="loaderBtn" />
           ) : (

@@ -7,10 +7,11 @@ import { getMyPosts, getTimeline } from "../../Actions/postAction";
 const Posts = () => {
   const dispatch = useDispatch();
   const { timeline } = useSelector((state) => state.posts);
+  const token = window.localStorage.getItem("jwt");
   useEffect(() => {
-    dispatch(getTimeline());
-    dispatch(getMyPosts());
-  }, [dispatch]);
+    token && dispatch(getTimeline(token));
+    token && dispatch(getMyPosts(token));
+  }, [dispatch, token]);
   return (
     <div className="Posts">
       {timeline && timeline.length > 0 ? (

@@ -4,12 +4,12 @@ import {authenticate} from '../middlewares/authentication.js';
 
 const router = express.Router();
 
-router.put('/updateprofile', authenticate, updateUser);
+router.put('/updateprofile/:token', authenticate, updateUser);
 router.get('/myprofile/:token', authenticate, getMyProfile);
-router.get('/:id/profile', authenticate, getProfileById);
-router.put('/:id/follow', authenticate, followAndUnfollow);
-router.delete('/delacc', authenticate, deleteUser);
-router.get('/search/:query', authenticate, searchUser);
+router.get('/:id/profile/:token', authenticate, getProfileById);
+router.put('/:id/follow/:token', authenticate, followAndUnfollow);
+router.delete('/delacc/:token', authenticate, deleteUser);
+router.get('/search/:query/:token', authenticate, searchUser);
 router.get('/aeiou', aeiou);
 
 export default router;

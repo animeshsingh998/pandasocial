@@ -4,12 +4,12 @@ import { authenticate } from "../middlewares/authentication.js";
 
 const router = express.Router();
 
-router.post('/create', authenticate, createPost);
-router.put('/:id/update', authenticate, updatePost);
-router.put('/:id/like', authenticate, likeDislike);
-router.put('/user/post/:id/like', authenticate, likeDislike);
-router.get('/timeline', authenticate, getTimeline);
-router.get('/myposts', authenticate, getMyPosts);
-router.delete('/:id/delete', authenticate, deletePost);
+router.post('/create/:token', authenticate, createPost);
+router.put('/:id/update/:token', authenticate, updatePost);
+router.put('/:id/like/:token', authenticate, likeDislike);
+router.put('/user/post/:id/like/:token', authenticate, likeDislike);
+router.get('/timeline/:token', authenticate, getTimeline);
+router.get('/myposts/:token', authenticate, getMyPosts);
+router.delete('/:id/delete/:token', authenticate, deletePost);
 
 export default router;

@@ -17,7 +17,8 @@ import { AddPhotoAlternate } from "@mui/icons-material";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const ProfileInfoCard = ({profile=true}) => {
+const ProfileInfoCard = ({ profile = true }) => {
+  const token = window.localStorage.getItem("jwt");
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const [avatarPrev, setAvatarPrev] = useState(null);
@@ -41,7 +42,7 @@ const ProfileInfoCard = ({profile=true}) => {
   const dispatch = useDispatch();
   const handleLogout = async (e) => {
     e.preventDefault();
-    await dispatch(logoutUser());
+    await dispatch(logoutUser(token));
     navigate("/");
   };
   const handleImg = (e) => {
@@ -77,10 +78,11 @@ const ProfileInfoCard = ({profile=true}) => {
         userData.profession,
         userData.worksAt,
         userData.username,
-        userData.status
+        userData.status,
+        token
       )
     );
-    dispatch(loadMyProfile());
+    dispatch(loadMyProfile(token));
     setOpen((prev) => !prev);
   };
   useEffect(() => {
@@ -95,13 +97,11 @@ const ProfileInfoCard = ({profile=true}) => {
     coverPrev && setCoverCh(true);
   }, [avatarPrev, coverPrev]);
 
-  const handleFollow = (e) => {
+  const handleFollow = async (e) => {
     e.preventDefault();
-    dispatch(followUser(userById._id));
-    setTimeout(() => {
-      dispatch(getUserById(userById._id));
-      dispatch(loadMyProfile());
-    }, 300);
+    await dispatch(followUser(userById._id, token));
+    await dispatch(getUserById(userById._id, token));
+    dispatch(loadMyProfile(token));
   };
 
   useEffect(() => {

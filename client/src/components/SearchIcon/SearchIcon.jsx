@@ -7,14 +7,15 @@ import {searchUsers} from '../../Actions/userAction'
 const SearchIcon = () => {
   const dispatch = useDispatch();
   const [query, setQuery] = useState('');
+  const token = window.localStorage.getItem("jwt");
   const handleSearch = () => {
-    dispatch(searchUsers(query));
+    token && dispatch(searchUsers(query, token));
   }
   useEffect(() => {
     if (query.length > 1) {
-      dispatch(searchUsers(query));
+      token && dispatch(searchUsers(query, token));
     }
-  }, [dispatch, query]);
+  }, [dispatch, query, token]);
   return (
     <div className="SearchIcon">
       <div className="search">
