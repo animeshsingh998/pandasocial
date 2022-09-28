@@ -9,7 +9,8 @@ import './Home.css'
 const Home = () => {
   const token = window.localStorage.getItem('jwt');
     const dispatch = useDispatch();
-    useEffect(() => {
+  useEffect(() => {
+    console.log(`token from home ${token}`);
       token && dispatch(loadMyProfile(token));
     }, [dispatch, token]);
   return (
