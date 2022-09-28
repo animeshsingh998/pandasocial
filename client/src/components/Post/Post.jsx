@@ -8,11 +8,17 @@ import {
 } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { likeDislikePost, getTimeline, getMyPosts, delPost } from "../../Actions/postAction";
+import {
+  likeDislikePost,
+  getTimeline,
+  getMyPosts,
+  delPost,
+} from "../../Actions/postAction";
 import { getUserById, loadMyProfile } from "../../Actions/userAction";
 
 const Post = ({ post, isImage, del = false }) => {
-  const { user, userById } = useSelector(state => state.users);
+  const { user, userById } = useSelector((state) => state.users);
+  const token = window.localStorage.getItem("jwt");
   const dispatch = useDispatch();
   const [liked, setLiked] = useState(false);
   useEffect(() => {
@@ -20,27 +26,23 @@ const Post = ({ post, isImage, del = false }) => {
       setLiked(true);
     } else {
       setLiked(false);
-    };
+    }
   }, [post.likes, liked, user._id]);
-  
-  const handleLike = () => {
-    dispatch(likeDislikePost(post._id));
-    setTimeout(() => {
-      dispatch(getTimeline());
-      dispatch(getMyPosts());
-      dispatch(getUserById(userById._id))
-    }, 100);
+
+  const handleLike = async () => {
+    await dispatch(likeDislikePost(post._id, token));
+    await dispatch(getTimeline(token));
+    await dispatch(getMyPosts(token));
+    dispatch(getUserById(userById._id, token));
   };
 
-  const handleDelete = () => {
+  const handleDelete = async () => {
     if (window.confirm("Delete Post?")) {
-      dispatch(delPost(post._id));
-      setTimeout(() => {
-        dispatch(getMyPosts());
-        dispatch(loadMyProfile());
-      }, 300);
+      await dispatch(delPost(post._id, token));
+      await dispatch(getMyPosts(token));
+      dispatch(loadMyProfile(token));
     }
-  }
+  };
   return (
     <div className="Post">
       {isImage ? (
