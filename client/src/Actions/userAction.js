@@ -66,11 +66,11 @@ export const loadMyProfile = ({token}) => async (dispatch) => {
     dispatch({
       type: "loadMyProfileRequest",
     });
-
+    console.log(`token from action ${token}`);
     const { data } = await axios.get(`${baseUrl}/user/myprofile/${token}`, { 
       headers: headers
      });
-
+     
     dispatch({
       type: "loadMyProfileSuccess",
       payload: data,
