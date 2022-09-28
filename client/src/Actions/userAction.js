@@ -61,7 +61,7 @@ export const registerUser = (email, username, password) => async (dispatch) => {
   }
 };
 
-export const loadMyProfile = ({token}) => async (dispatch) => {
+export const loadMyProfile = (token) => async (dispatch) => {
   try {
     dispatch({
       type: "loadMyProfileRequest",
