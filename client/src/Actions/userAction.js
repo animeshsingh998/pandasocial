@@ -20,8 +20,6 @@ export const loginUser = (email, password) => async (dispatch) => {
       { headers },
       { withCredentials: true }
     );
-    console.log(data.token);
-    document.cookie = `jwt = ${data.token}`
     window.localStorage.setItem("jwt", data.token);
 
     dispatch({
@@ -66,7 +64,6 @@ export const loadMyProfile = (token) => async (dispatch) => {
     dispatch({
       type: "loadMyProfileRequest",
     });
-    console.log(`token from action ${token}`);
     const { data } = await axios.get(`${baseUrl}/user/myprofile/${token}`, { 
       headers: headers
      });
@@ -95,6 +92,7 @@ export const logoutUser = (token) => async (dispatch) => {
     dispatch({
       type: "logoutSuccess",
     });
+    window.localStorage.removeItem('jwt');
   } catch (error) {
     dispatch({
       type: "logoutFailure",

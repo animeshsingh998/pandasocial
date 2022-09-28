@@ -6,7 +6,7 @@ export const authenticate = async (req, res, next) => {
     const token = req.params.token;
     console.log(`2 ${token}`)
     if (!token) {
-      return res.status(401).json({error: "Please Login First"});
+      return res.status(401).json("Please Login First");
     }
 
     const data = await jwt.verify(token, process.env.JWT_KEY);
@@ -14,6 +14,6 @@ export const authenticate = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    return res.status(500).json({error: "Server Error"});
+    return res.status(500).json("Server Error");
   }
 };
