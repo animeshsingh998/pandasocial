@@ -22,7 +22,7 @@ export const loginUser = (email, password) => async (dispatch) => {
     );
     console.log(data.token);
     document.cookie = `jwt = ${data.token}`
-    window.localStorage.setItem("jet", data.token);
+    window.localStorage.setItem("jwt", data.token);
 
     dispatch({
       type: "loginSuccess",
@@ -61,13 +61,13 @@ export const registerUser = (email, username, password) => async (dispatch) => {
   }
 };
 
-export const loadMyProfile = () => async (dispatch) => {
+export const loadMyProfile = ({token}) => async (dispatch) => {
   try {
     dispatch({
       type: "loadMyProfileRequest",
     });
 
-    const { data } = await axios.get(`${baseUrl}/user/myprofile`, { 
+    const { data } = await axios.get(`${baseUrl}/user/myprofile/${token}`, { 
       headers: headers
      });
 
