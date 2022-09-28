@@ -33,7 +33,7 @@ const Post = ({ post, isImage, del = false }) => {
     await dispatch(likeDislikePost(post._id, token));
     await dispatch(getTimeline(token));
     await dispatch(getMyPosts(token));
-    dispatch(getUserById(userById._id, token));
+    userById && dispatch(getUserById(userById._id, token));
   };
 
   const handleDelete = async () => {
