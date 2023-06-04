@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 import authRoutes from './routes/auth.js'
 import userRoutes from './routes/user.js'
 import postRoutes from './routes/post.js'
+import extraRoutes from './routes/extra.js'
 import cloudinary from 'cloudinary'
 import cors from 'cors'
 
@@ -23,6 +24,7 @@ app.use(
   })
 );
 app.use('/auth', cors(), authRoutes);
+app.use('/extra', cors(), extraRoutes);
 app.use('/user', cors(), userRoutes);
 app.use('/post', cors(), postRoutes);
 app.use('/user/post', postRoutes);
@@ -31,6 +33,7 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
+
 
 mongoose
   .connect(process.env.MONGO_URL, {
